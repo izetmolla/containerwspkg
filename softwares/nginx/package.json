@@ -1,0 +1,18 @@
+{
+  "name": "nginx",
+  "details": "High-performance HTTP server and reverse proxy",
+  "category": "Web",
+  "sub_category": "Servers",
+  "tags": [
+    "web",
+    "proxy",
+    "http"
+  ],
+  "icon": "Server",
+  "color": "#009639",
+  "order": 10,
+  "service_units": [
+    "nginx.service"
+  ],
+  "is_active": true
+}

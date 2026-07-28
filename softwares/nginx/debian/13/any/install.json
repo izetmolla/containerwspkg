@@ -1,0 +1,18 @@
+{
+  "version": "1.26.2",
+  "is_latest": true,
+  "os": "linux",
+  "distro_id": "debian",
+  "distro_version": "13",
+  "distro": "",
+  "arch": "any",
+  "platform": "",
+  "package_family": "apt",
+  "kernel": "",
+  "virtualization": "",
+  "container_runtime": "",
+  "cloud_provider": "",
+  "install_script": "#!/usr/bin/env bash\nset -euo pipefail\nexport DEBIAN_FRONTEND=noninteractive\napt-get update\napt-get install -y --no-install-recommends nginx\n",
+  "uninstall_script": "#!/usr/bin/env bash\nset -euo pipefail\nexport DEBIAN_FRONTEND=noninteractive\napt-get remove -y nginx || true\napt-get autoremove -y || true\n",
+  "upgrade_script": "#!/usr/bin/env bash\nset -euo pipefail\nexport DEBIAN_FRONTEND=noninteractive\napt-get update\napt-get install -y --only-upgrade nginx\n"
+}
