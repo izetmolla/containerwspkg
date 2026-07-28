@@ -1,0 +1,20 @@
+{
+  "name": "Zenmap",
+  "details": "Official Nmap GUI for network discovery, port scans, and topology maps. Kali desktop launcher (zenmap-kbx when available).",
+  "category": "Network",
+  "sub_category": "Scanning",
+  "tags": [
+    "kali",
+    "zenmap",
+    "nmap",
+    "scanner",
+    "desktop",
+    "network"
+  ],
+  "icon": "ScanSearch",
+  "image": "https://cdn.simpleicons.org/nmap",
+  "color": "#3D5AFE",
+  "order": 211,
+  "service_units": null,
+  "is_active": true
+}

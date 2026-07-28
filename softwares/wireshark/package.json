@@ -1,0 +1,20 @@
+{
+  "name": "Wireshark",
+  "details": "GUI packet analyzer for live capture and deep protocol inspection. Kali desktop launcher for all users.",
+  "category": "Network",
+  "sub_category": "Monitoring",
+  "tags": [
+    "kali",
+    "wireshark",
+    "pcap",
+    "sniffer",
+    "desktop",
+    "network"
+  ],
+  "icon": "Radar",
+  "image": "https://cdn.simpleicons.org/wireshark",
+  "color": "#1679A7",
+  "order": 210,
+  "service_units": null,
+  "is_active": true
+}

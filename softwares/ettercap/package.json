@@ -1,0 +1,20 @@
+{
+  "name": "Ettercap",
+  "details": "Graphical sniffer/interceptor for switched LANs (MITM analysis). Kali desktop launcher via ettercap -G.",
+  "category": "Network",
+  "sub_category": "Security",
+  "tags": [
+    "kali",
+    "ettercap",
+    "mitm",
+    "sniffer",
+    "desktop",
+    "network"
+  ],
+  "icon": "Shield",
+  "image": "https://www.google.com/s2/favicons?domain=www.ettercap-project.org\u0026sz=128",
+  "color": "#C62828",
+  "order": 213,
+  "service_units": null,
+  "is_active": true
+}

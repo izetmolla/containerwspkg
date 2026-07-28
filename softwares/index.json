@@ -272,6 +272,86 @@
       "order": 63,
       "service_units": null,
       "is_active": true
+    },
+    {
+      "name": "Wireshark",
+      "details": "GUI packet analyzer for live capture and deep protocol inspection. Kali desktop launcher for all users.",
+      "category": "Network",
+      "sub_category": "Monitoring",
+      "tags": [
+        "kali",
+        "wireshark",
+        "pcap",
+        "sniffer",
+        "desktop",
+        "network"
+      ],
+      "icon": "Radar",
+      "image": "https://cdn.simpleicons.org/wireshark",
+      "color": "#1679A7",
+      "order": 210,
+      "service_units": null,
+      "is_active": true
+    },
+    {
+      "name": "Zenmap",
+      "details": "Official Nmap GUI for network discovery, port scans, and topology maps. Kali desktop launcher (zenmap-kbx when available).",
+      "category": "Network",
+      "sub_category": "Scanning",
+      "tags": [
+        "kali",
+        "zenmap",
+        "nmap",
+        "scanner",
+        "desktop",
+        "network"
+      ],
+      "icon": "ScanSearch",
+      "image": "https://cdn.simpleicons.org/nmap",
+      "color": "#3D5AFE",
+      "order": 211,
+      "service_units": null,
+      "is_active": true
+    },
+    {
+      "name": "EtherApe",
+      "details": "Real-time graphical network traffic visualizer (node/link view). Desktop launcher for Kali containers.",
+      "category": "Network",
+      "sub_category": "Monitoring",
+      "tags": [
+        "kali",
+        "etherape",
+        "monitor",
+        "traffic",
+        "desktop",
+        "network"
+      ],
+      "icon": "Activity",
+      "image": "https://www.google.com/s2/favicons?domain=etherape.sourceforge.io\u0026sz=128",
+      "color": "#00ACC1",
+      "order": 212,
+      "service_units": null,
+      "is_active": true
+    },
+    {
+      "name": "Ettercap",
+      "details": "Graphical sniffer/interceptor for switched LANs (MITM analysis). Kali desktop launcher via ettercap -G.",
+      "category": "Network",
+      "sub_category": "Security",
+      "tags": [
+        "kali",
+        "ettercap",
+        "mitm",
+        "sniffer",
+        "desktop",
+        "network"
+      ],
+      "icon": "Shield",
+      "image": "https://www.google.com/s2/favicons?domain=www.ettercap-project.org\u0026sz=128",
+      "color": "#C62828",
+      "order": 213,
+      "service_units": null,
+      "is_active": true
     }
   ]
 }
