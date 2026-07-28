@@ -1,0 +1,19 @@
+{
+  "name": "RustDesk",
+  "details": "Install RustDesk remote desktop client with Desktop shortcuts for all users.",
+  "category": "Desktop",
+  "sub_category": "Remote",
+  "tags": [
+    "rustdesk",
+    "remote",
+    "desktop",
+    "vnc",
+    "rdp"
+  ],
+  "icon": "Monitor",
+  "image": "https://www.google.com/s2/favicons?domain=rustdesk.com&sz=128",
+  "color": "#024EFF",
+  "order": 20,
+  "service_units": null,
+  "is_active": true
+}

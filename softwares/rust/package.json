@@ -1,5 +1,5 @@
 {
-  "name": "rust",
+  "name": "Rust",
   "details": "Install the Rust toolchain via rustup from https://rust-lang.org (rustc, cargo, rustup).",
   "category": "Development",
   "sub_category": "Runtimes",
@@ -8,7 +8,8 @@
     "rustup",
     "cargo",
     "rustc",
-    "toolchain"
+    "toolchain",
+    "rust-lang"
   ],
   "icon": "Code",
   "image": "https://www.rust-lang.org/static/images/rust-logo-blk.svg",
