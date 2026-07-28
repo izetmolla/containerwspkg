@@ -1,0 +1,18 @@
+{
+  "name": "gpustat",
+  "details": "Pretty NVIDIA GPU status for the shell: utilization, memory, temperature, and power via nvidia-smi. Best on hosts with NVIDIA drivers.",
+  "category": "Monitoring",
+  "sub_category": "GPU",
+  "tags": [
+    "gpustat",
+    "gpu",
+    "nvidia",
+    "cuda",
+    "monitoring"
+  ],
+  "icon": "Zap",
+  "color": "#84CC16",
+  "order": 63,
+  "service_units": null,
+  "is_active": true
+}

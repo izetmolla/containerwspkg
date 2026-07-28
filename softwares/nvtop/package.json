@@ -1,0 +1,20 @@
+{
+  "name": "nvtop",
+  "details": "Universal GPU process monitor (htop for graphics). Works across NVIDIA, AMD, Intel, and other DRM GPUs — utilization, VRAM, and per-process use.",
+  "category": "Monitoring",
+  "sub_category": "GPU",
+  "tags": [
+    "nvtop",
+    "gpu",
+    "vram",
+    "nvidia",
+    "amd",
+    "intel",
+    "monitoring"
+  ],
+  "icon": "CircuitBoard",
+  "color": "#22C55E",
+  "order": 60,
+  "service_units": null,
+  "is_active": true
+}

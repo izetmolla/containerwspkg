@@ -1,0 +1,18 @@
+{
+  "version": "apt",
+  "is_latest": true,
+  "os": "linux",
+  "distro_id": "debian",
+  "distro_version": "13",
+  "distro": "",
+  "arch": "",
+  "platform": "linux",
+  "package_family": "apt",
+  "kernel": "",
+  "virtualization": "",
+  "container_runtime": "",
+  "cloud_provider": "",
+  "install_script": "#!/bin/bash\nset -euo pipefail\nexport DEBIAN_FRONTEND=noninteractive\n\necho \"==\u003e Installing nvtop (GPU process monitor)\"\napt-get update -y\napt-get install -y --no-install-recommends nvtop\n\necho \"==\u003e Verifying\"\ncommand -v nvtop\nnvtop --version 2\u003e/dev/null || nvtop -h 2\u003e\u00261 | head -n 3 || true\necho \"==\u003e nvtop installed\"\n",
+  "uninstall_script": "#!/bin/bash\nset -euo pipefail\nexport DEBIAN_FRONTEND=noninteractive\n\necho \"==\u003e Fully removing nvtop\"\nif command -v apt-get \u003e/dev/null 2\u003e\u00261; then\n  apt-get remove -y --purge nvtop || true\n  apt-get autoremove -y || true\nelif command -v dnf \u003e/dev/null 2\u003e\u00261; then\n  dnf remove -y nvtop || true\nelif command -v pacman \u003e/dev/null 2\u003e\u00261; then\n  pacman -Rns --noconfirm nvtop || true\nfi\necho \"==\u003e nvtop removed\"\n",
+  "upgrade_script": ""
+}

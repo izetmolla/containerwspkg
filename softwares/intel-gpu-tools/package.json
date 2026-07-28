@@ -1,0 +1,19 @@
+{
+  "name": "intel-gpu-tools",
+  "details": "Intel GPU utilities including intel_gpu_top for live engine utilization, frequency, and power on i915/Xe graphics. Best paired with an Intel GPU.",
+  "category": "Monitoring",
+  "sub_category": "GPU",
+  "tags": [
+    "intel-gpu-tools",
+    "intel_gpu_top",
+    "gpu",
+    "intel",
+    "i915",
+    "monitoring"
+  ],
+  "icon": "Cpu",
+  "color": "#3B82F6",
+  "order": 61,
+  "service_units": null,
+  "is_active": true
+}

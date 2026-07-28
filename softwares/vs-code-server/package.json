@@ -1,0 +1,19 @@
+{
+  "name": "VS Code Server",
+  "details": "Install Microsoft's VS Code CLI and a codeserver helper (serve-web / tunnel) to open folders in the browser. See https://code.visualstudio.com/docs/remote/vscode-server",
+  "category": "Desktop",
+  "sub_category": "Editors",
+  "tags": [
+    "vscode",
+    "code-server",
+    "serve-web",
+    "tunnel",
+    "remote",
+    "browser"
+  ],
+  "icon": "Cloud",
+  "color": "#0078D4",
+  "order": 7,
+  "service_units": null,
+  "is_active": true
+}

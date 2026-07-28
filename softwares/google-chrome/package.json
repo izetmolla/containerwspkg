@@ -1,0 +1,17 @@
+{
+  "name": "Google Chrome",
+  "details": "Install Google Chrome (amd64) or Chromium (arm64) for apt/dnf hosts, with Desktop shortcuts for all users.",
+  "category": "Desktop",
+  "sub_category": "Browsers",
+  "tags": [
+    "chrome",
+    "chromium",
+    "browser",
+    "desktop"
+  ],
+  "icon": "Globe",
+  "color": "#4285F4",
+  "order": 5,
+  "service_units": null,
+  "is_active": true
+}

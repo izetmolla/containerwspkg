@@ -1,0 +1,18 @@
+{
+  "name": "Visual Studio Code",
+  "details": "Install Visual Studio Code (deb/rpm) with a container-safe launcher and Desktop shortcuts for all users.",
+  "category": "Desktop",
+  "sub_category": "Editors",
+  "tags": [
+    "vscode",
+    "code",
+    "editor",
+    "ide",
+    "desktop"
+  ],
+  "icon": "Code",
+  "color": "#007ACC",
+  "order": 6,
+  "service_units": null,
+  "is_active": true
+}

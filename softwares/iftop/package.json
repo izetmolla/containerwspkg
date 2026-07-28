@@ -1,0 +1,18 @@
+{
+  "name": "iftop",
+  "details": "Live network bandwidth monitor grouped by remote host. Use it from a shell when you need connection-level traffic detail beyond dashboard totals.",
+  "category": "Monitoring",
+  "sub_category": "Network",
+  "tags": [
+    "iftop",
+    "network",
+    "bandwidth",
+    "traffic",
+    "monitoring"
+  ],
+  "icon": "Network",
+  "color": "#F59E0B",
+  "order": 52,
+  "service_units": null,
+  "is_active": true
+}

@@ -1,0 +1,18 @@
+{
+  "version": "1.26.5",
+  "is_latest": true,
+  "os": "linux",
+  "distro_id": "ubuntu",
+  "distro_version": "24.10",
+  "distro": "",
+  "arch": "",
+  "platform": "linux",
+  "package_family": "apt",
+  "kernel": "",
+  "virtualization": "",
+  "container_runtime": "",
+  "cloud_provider": "",
+  "install_script": "#!/bin/bash\n# Installing GO Lang\nset -euo pipefail\n\nexport HOME=\"${HOME:-/root}\"\nexport USER=\"${USER:-root}\"\nmkdir -p \"$HOME\"\n\nif [ -z \"${1:-}\" ]; then\n    GO_VERSION=\"1.26.5\"\nelse\n    GO_VERSION=$1\nfi\n\necho \"Installing GO Lang - $GO_VERSION\"\n\napt update \u0026\u0026 apt install wget curl tar -y\ncd /tmp\nwget -q --show-progress https://go.dev/dl/go$GO_VERSION.linux-amd64.tar.gz\nrm -rf /usr/local/go\ntar -C /usr/local -xzf go$GO_VERSION.linux-amd64.tar.gz\nrm -f go$GO_VERSION.linux-amd64.tar.gz\n\nexport GOROOT=/usr/local/go\nexport GOPATH=\"${GOPATH:-$HOME/go}\"\nexport GOCACHE=\"${GOCACHE:-$HOME/.cache/go-build}\"\nexport GOMODCACHE=\"${GOMODCACHE:-$GOPATH/pkg/mod}\"\nmkdir -p \"$GOPATH\" \"$GOCACHE\" \"$GOMODCACHE\" \"$GOPATH/bin\"\nexport PATH=\"$GOPATH/bin:$GOROOT/bin:$PATH\"\n\n# Persist env for login shells\ngrep -q 'GOROOT=/usr/local/go' /etc/profile || {\n  echo 'export GOROOT=/usr/local/go' \u003e\u003e /etc/profile\n  echo 'export GOPATH=$HOME/go' \u003e\u003e /etc/profile\n  echo 'export GOCACHE=$HOME/.cache/go-build' \u003e\u003e /etc/profile\n  echo 'export PATH=$GOPATH/bin:$GOROOT/bin:$PATH' \u003e\u003e /etc/profile\n}\ngrep -q 'GOROOT=/usr/local/go' \"$HOME/.bashrc\" || {\n  echo 'export GOROOT=/usr/local/go' \u003e\u003e \"$HOME/.bashrc\"\n  echo 'export GOPATH=$HOME/go' \u003e\u003e \"$HOME/.bashrc\"\n  echo 'export GOCACHE=$HOME/.cache/go-build' \u003e\u003e \"$HOME/.bashrc\"\n  echo 'export PATH=$GOPATH/bin:$GOROOT/bin:$PATH' \u003e\u003e \"$HOME/.bashrc\"\n}\n\necho \"Go toolchain: $(go version)\"\necho \"Installing Air...\"\ngo install github.com/air-verse/air@latest\necho \"Air installed: $(command -v air)\"\n",
+  "uninstall_script": "#!/bin/bash\n# Full remove of Go toolchain + Air helpers installed by the catalog script.\nset -euo pipefail\n\nexport HOME=\"${HOME:-/root}\"\nexport GOPATH=\"${GOPATH:-$HOME/go}\"\n\necho \"==\u003e Stopping nothing (Go has no service)\"\necho \"==\u003e Removing /usr/local/go\"\nrm -rf /usr/local/go\n\necho \"==\u003e Removing Air binary if present\"\nrm -f \"$GOPATH/bin/air\" /usr/local/bin/air 2\u003e/dev/null || true\n\necho \"==\u003e Cleaning profile exports (best effort)\"\nfor f in /etc/profile \"$HOME/.bashrc\"; do\n  [ -f \"$f\" ] || continue\n  tmp=\"$(mktemp)\"\n  grep -vE 'GOROOT=/usr/local/go|GOPATH=\\$HOME/go|GOCACHE=\\$HOME/\\.cache/go-build|GOPATH/bin:\\$GOROOT/bin' \"$f\" \u003e \"$tmp\" || true\n  mv \"$tmp\" \"$f\"\ndone\n\necho \"==\u003e Go fully removed\"\n",
+  "upgrade_script": ""
+}

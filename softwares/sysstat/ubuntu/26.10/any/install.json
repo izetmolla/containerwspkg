@@ -1,0 +1,18 @@
+{
+  "version": "apt",
+  "is_latest": true,
+  "os": "linux",
+  "distro_id": "ubuntu",
+  "distro_version": "26.10",
+  "distro": "",
+  "arch": "",
+  "platform": "linux",
+  "package_family": "apt",
+  "kernel": "",
+  "virtualization": "",
+  "container_runtime": "",
+  "cloud_provider": "",
+  "install_script": "#!/bin/bash\nset -euo pipefail\nexport DEBIAN_FRONTEND=noninteractive\n\necho \"==\u003e Installing sysstat (mpstat, iostat, sar)\"\napt-get update -y\napt-get install -y --no-install-recommends sysstat\n\nif [ -f /etc/default/sysstat ]; then\n  sed -i 's/^ENABLED=.*/ENABLED=\"true\"/' /etc/default/sysstat || true\nfi\nsystemctl enable --now sysstat 2\u003e/dev/null || true\n\necho \"==\u003e Verifying\"\ncommand -v mpstat\ncommand -v iostat\nmpstat 1 1 || true\necho \"==\u003e sysstat installed\"\n",
+  "uninstall_script": "#!/bin/bash\nset -euo pipefail\nexport DEBIAN_FRONTEND=noninteractive\n\necho \"==\u003e Fully removing sysstat\"\nif command -v apt-get \u003e/dev/null 2\u003e\u00261; then\n  apt-get remove -y --purge sysstat || true\n  apt-get autoremove -y || true\nelif command -v dnf \u003e/dev/null 2\u003e\u00261; then\n  dnf remove -y sysstat || true\nelif command -v pacman \u003e/dev/null 2\u003e\u00261; then\n  pacman -Rns --noconfirm sysstat || true\nfi\necho \"==\u003e sysstat removed\"\n",
+  "upgrade_script": ""
+}

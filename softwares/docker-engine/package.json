@@ -1,0 +1,19 @@
+{
+  "name": "Docker Engine",
+  "details": "Install Docker Engine static binaries, Buildx, and Compose, then start the dockerd service.",
+  "category": "Infrastructure",
+  "sub_category": "Containers",
+  "tags": [
+    "docker",
+    "containers",
+    "compose",
+    "buildx"
+  ],
+  "icon": "Container",
+  "color": "#2496ED",
+  "order": 3,
+  "service_units": [
+    "docker.service"
+  ],
+  "is_active": true
+}

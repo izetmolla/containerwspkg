@@ -1,0 +1,18 @@
+{
+  "name": "htop",
+  "details": "Interactive process viewer for live CPU and memory per process. Useful from the shell when investigating load on this VM.",
+  "category": "Monitoring",
+  "sub_category": "Processes",
+  "tags": [
+    "htop",
+    "cpu",
+    "memory",
+    "processes",
+    "monitoring"
+  ],
+  "icon": "Activity",
+  "color": "#22C55E",
+  "order": 50,
+  "service_units": null,
+  "is_active": true
+}

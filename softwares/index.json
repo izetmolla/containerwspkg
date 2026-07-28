@@ -17,6 +17,263 @@
         "nginx.service"
       ],
       "is_active": true
+    },
+    {
+      "name": "Go",
+      "details": "Install the Go toolchain (default 1.26.5), configure GOROOT/GOPATH, and install Air for live reloads.",
+      "category": "Development",
+      "sub_category": "Runtimes",
+      "tags": [
+        "go",
+        "golang",
+        "air",
+        "runtime"
+      ],
+      "icon": "Box",
+      "color": "#00ADD8",
+      "order": 1,
+      "service_units": null,
+      "is_active": true
+    },
+    {
+      "name": "Node.js",
+      "details": "Install NVM (v0.40.5), the Node.js LTS release, and the latest pnpm package manager.",
+      "category": "Development",
+      "sub_category": "Runtimes",
+      "tags": [
+        "node",
+        "nvm",
+        "javascript",
+        "pnpm"
+      ],
+      "icon": "Hexagon",
+      "color": "#339933",
+      "order": 2,
+      "service_units": null,
+      "is_active": true
+    },
+    {
+      "name": "Docker Engine",
+      "details": "Install Docker Engine static binaries, Buildx, and Compose, then start the dockerd service.",
+      "category": "Infrastructure",
+      "sub_category": "Containers",
+      "tags": [
+        "docker",
+        "containers",
+        "compose",
+        "buildx"
+      ],
+      "icon": "Container",
+      "color": "#2496ED",
+      "order": 3,
+      "service_units": [
+        "docker.service"
+      ],
+      "is_active": true
+    },
+    {
+      "name": "Google Chrome",
+      "details": "Install Google Chrome (amd64) or Chromium (arm64) for apt/dnf hosts, with Desktop shortcuts for all users.",
+      "category": "Desktop",
+      "sub_category": "Browsers",
+      "tags": [
+        "chrome",
+        "chromium",
+        "browser",
+        "desktop"
+      ],
+      "icon": "Globe",
+      "color": "#4285F4",
+      "order": 5,
+      "service_units": null,
+      "is_active": true
+    },
+    {
+      "name": "Visual Studio Code",
+      "details": "Install Visual Studio Code (deb/rpm) with a container-safe launcher and Desktop shortcuts for all users.",
+      "category": "Desktop",
+      "sub_category": "Editors",
+      "tags": [
+        "vscode",
+        "code",
+        "editor",
+        "ide",
+        "desktop"
+      ],
+      "icon": "Code",
+      "color": "#007ACC",
+      "order": 6,
+      "service_units": null,
+      "is_active": true
+    },
+    {
+      "name": "VS Code Server",
+      "details": "Install Microsoft's VS Code CLI and a codeserver helper (serve-web / tunnel) to open folders in the browser. See https://code.visualstudio.com/docs/remote/vscode-server",
+      "category": "Desktop",
+      "sub_category": "Editors",
+      "tags": [
+        "vscode",
+        "code-server",
+        "serve-web",
+        "tunnel",
+        "remote",
+        "browser"
+      ],
+      "icon": "Cloud",
+      "color": "#0078D4",
+      "order": 7,
+      "service_units": null,
+      "is_active": true
+    },
+    {
+      "name": "Cursor",
+      "details": "Install Cursor AI code editor (deb preferred; AppImage extracted without FUSE) with a container-safe launcher and Desktop shortcuts for all users.",
+      "category": "Desktop",
+      "sub_category": "Editors",
+      "tags": [
+        "cursor",
+        "ai",
+        "editor",
+        "ide",
+        "desktop"
+      ],
+      "icon": "Sparkles",
+      "color": "#000000",
+      "order": 7,
+      "service_units": null,
+      "is_active": true
+    },
+    {
+      "name": "htop",
+      "details": "Interactive process viewer for live CPU and memory per process. Useful from the shell when investigating load on this VM.",
+      "category": "Monitoring",
+      "sub_category": "Processes",
+      "tags": [
+        "htop",
+        "cpu",
+        "memory",
+        "processes",
+        "monitoring"
+      ],
+      "icon": "Activity",
+      "color": "#22C55E",
+      "order": 50,
+      "service_units": null,
+      "is_active": true
+    },
+    {
+      "name": "sysstat",
+      "details": "System activity tools: mpstat (CPU), iostat (disk), and sar (history). Complements the live dashboard with CLI deep-dives.",
+      "category": "Monitoring",
+      "sub_category": "System",
+      "tags": [
+        "sysstat",
+        "mpstat",
+        "iostat",
+        "sar",
+        "cpu",
+        "disk",
+        "monitoring"
+      ],
+      "icon": "BarChart3",
+      "color": "#0EA5E9",
+      "order": 51,
+      "service_units": null,
+      "is_active": true
+    },
+    {
+      "name": "iftop",
+      "details": "Live network bandwidth monitor grouped by remote host. Use it from a shell when you need connection-level traffic detail beyond dashboard totals.",
+      "category": "Monitoring",
+      "sub_category": "Network",
+      "tags": [
+        "iftop",
+        "network",
+        "bandwidth",
+        "traffic",
+        "monitoring"
+      ],
+      "icon": "Network",
+      "color": "#F59E0B",
+      "order": 52,
+      "service_units": null,
+      "is_active": true
+    },
+    {
+      "name": "nvtop",
+      "details": "Universal GPU process monitor (htop for graphics). Works across NVIDIA, AMD, Intel, and other DRM GPUs — utilization, VRAM, and per-process use.",
+      "category": "Monitoring",
+      "sub_category": "GPU",
+      "tags": [
+        "nvtop",
+        "gpu",
+        "vram",
+        "nvidia",
+        "amd",
+        "intel",
+        "monitoring"
+      ],
+      "icon": "CircuitBoard",
+      "color": "#22C55E",
+      "order": 60,
+      "service_units": null,
+      "is_active": true
+    },
+    {
+      "name": "intel-gpu-tools",
+      "details": "Intel GPU utilities including intel_gpu_top for live engine utilization, frequency, and power on i915/Xe graphics. Best paired with an Intel GPU.",
+      "category": "Monitoring",
+      "sub_category": "GPU",
+      "tags": [
+        "intel-gpu-tools",
+        "intel_gpu_top",
+        "gpu",
+        "intel",
+        "i915",
+        "monitoring"
+      ],
+      "icon": "Cpu",
+      "color": "#3B82F6",
+      "order": 61,
+      "service_units": null,
+      "is_active": true
+    },
+    {
+      "name": "radeontop",
+      "details": "Live AMD Radeon GPU utilization monitor. Shows graphics, memory, and shader activity for amdgpu/radeon devices from a shell.",
+      "category": "Monitoring",
+      "sub_category": "GPU",
+      "tags": [
+        "radeontop",
+        "gpu",
+        "amd",
+        "radeon",
+        "amdgpu",
+        "monitoring"
+      ],
+      "icon": "Activity",
+      "color": "#EF4444",
+      "order": 62,
+      "service_units": null,
+      "is_active": true
+    },
+    {
+      "name": "gpustat",
+      "details": "Pretty NVIDIA GPU status for the shell: utilization, memory, temperature, and power via nvidia-smi. Best on hosts with NVIDIA drivers.",
+      "category": "Monitoring",
+      "sub_category": "GPU",
+      "tags": [
+        "gpustat",
+        "gpu",
+        "nvidia",
+        "cuda",
+        "monitoring"
+      ],
+      "icon": "Zap",
+      "color": "#84CC16",
+      "order": 63,
+      "service_units": null,
+      "is_active": true
     }
   ]
 }

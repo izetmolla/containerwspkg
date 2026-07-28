@@ -1,0 +1,18 @@
+{
+  "version": "apt",
+  "is_latest": true,
+  "os": "linux",
+  "distro_id": "ubuntu",
+  "distro_version": "26.04",
+  "distro": "",
+  "arch": "",
+  "platform": "linux",
+  "package_family": "apt",
+  "kernel": "",
+  "virtualization": "",
+  "container_runtime": "",
+  "cloud_provider": "",
+  "install_script": "#!/bin/bash\nset -euo pipefail\nexport DEBIAN_FRONTEND=noninteractive\n\necho \"==\u003e Installing intel-gpu-tools (intel_gpu_top)\"\napt-get update -y\napt-get install -y --no-install-recommends intel-gpu-tools\n\necho \"==\u003e Verifying\"\ncommand -v intel_gpu_top\nintel_gpu_top -h 2\u003e\u00261 | head -n 5 || true\necho \"==\u003e intel-gpu-tools installed\"\n",
+  "uninstall_script": "#!/bin/bash\nset -euo pipefail\nexport DEBIAN_FRONTEND=noninteractive\n\necho \"==\u003e Fully removing intel-gpu-tools\"\nif command -v apt-get \u003e/dev/null 2\u003e\u00261; then\n  apt-get remove -y --purge intel-gpu-tools || true\n  apt-get autoremove -y || true\nelif command -v dnf \u003e/dev/null 2\u003e\u00261; then\n  dnf remove -y intel-gpu-tools || true\nelif command -v pacman \u003e/dev/null 2\u003e\u00261; then\n  pacman -Rns --noconfirm intel-gpu-tools || true\nfi\necho \"==\u003e intel-gpu-tools removed\"\n",
+  "upgrade_script": ""
+}

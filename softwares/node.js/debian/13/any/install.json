@@ -1,0 +1,18 @@
+{
+  "version": "nvm-v0.40.5-lts",
+  "is_latest": true,
+  "os": "linux",
+  "distro_id": "debian",
+  "distro_version": "13",
+  "distro": "",
+  "arch": "",
+  "platform": "linux",
+  "package_family": "apt",
+  "kernel": "",
+  "virtualization": "",
+  "container_runtime": "",
+  "cloud_provider": "",
+  "install_script": "#!/bin/bash\n# Install NVM + Node LTS + pnpm.\n# NOTE: do not enable \"set -u\" while sourcing nvm.sh — nvm uses unbound vars.\nset -eo pipefail\n\nexport HOME=\"${HOME:-/root}\"\nexport USER=\"${USER:-root}\"\nexport NVM_DIR=\"${NVM_DIR:-$HOME/.nvm}\"\nmkdir -p \"$HOME\"\n\nif [ -z \"${1:-}\" ]; then\n    NVM_VERSION=\"v0.40.5\"\nelse\n    NVM_VERSION=$1\nfi\n\necho \"Installing NVM - $NVM_VERSION\"\n\napt-get update\napt-get install --no-install-recommends -y curl ca-certificates bash\n\n# Fresh install into $NVM_DIR when missing or broken.\nneed_nvm_install=1\nif [ -s \"$NVM_DIR/nvm.sh\" ]; then\n  set +u\n  # shellcheck disable=SC1091\n  . \"$NVM_DIR/nvm.sh\"\n  if command -v nvm \u003e/dev/null 2\u003e\u00261; then\n    need_nvm_install=0\n    echo \"NVM already present at $NVM_DIR\"\n  fi\n  set -u\nfi\n\nif [ \"$need_nvm_install\" -eq 1 ]; then\n  echo \"Downloading NVM $NVM_VERSION...\"\n  rm -rf \"$NVM_DIR\"\n  curl -fsSL \"https://raw.githubusercontent.com/nvm-sh/nvm/${NVM_VERSION}/install.sh\" -o /tmp/nvm-install.sh\n  # Installer must not inherit nounset from the parent shell.\n  bash /tmp/nvm-install.sh\n  rm -f /tmp/nvm-install.sh\nfi\n\n# Load nvm without nounset.\nset +u\n# shellcheck disable=SC1091\n. \"$NVM_DIR/nvm.sh\"\nif ! command -v nvm \u003e/dev/null 2\u003e\u00261; then\n  echo \"ERROR: nvm failed to load from $NVM_DIR/nvm.sh\" \u003e\u00262\n  exit 1\nfi\n\necho \"Installing Node.js LTS...\"\nnvm install --lts\nnvm alias default 'lts/*'\nnvm use default\nset -u\n\nNODE_BIN=\"$(command -v node)\"\nNPM_BIN=\"$(command -v npm)\"\necho \"Node: $($NODE_BIN -v) ($NODE_BIN)\"\necho \"npm:  $($NPM_BIN -v) ($NPM_BIN)\"\n\necho \"Installing pnpm...\"\n\"$NPM_BIN\" install -g pnpm@latest\necho \"pnpm: $(command -v pnpm) ($(pnpm -v))\"\n\n# Persist nvm for login / interactive shells.\nPROFILE_SNIPPET='\nexport NVM_DIR=\"$HOME/.nvm\"\n[ -s \"$NVM_DIR/nvm.sh\" ] \u0026\u0026 . \"$NVM_DIR/nvm.sh\"\n[ -s \"$NVM_DIR/bash_completion\" ] \u0026\u0026 . \"$NVM_DIR/bash_completion\"\n'\nfor profile in \"$HOME/.bashrc\" \"$HOME/.profile\" /etc/profile.d/nvm.sh; do\n  dir=\"$(dirname \"$profile\")\"\n  mkdir -p \"$dir\"\n  if [ ! -f \"$profile\" ] || ! grep -q 'NVM_DIR=.*\\.nvm' \"$profile\" 2\u003e/dev/null; then\n    printf '%s\\n' \"$PROFILE_SNIPPET\" \u003e\u003e \"$profile\"\n  fi\ndone\n\necho \"NVM + Node LTS install complete.\"\n",
+  "uninstall_script": "#!/bin/bash\nset -euo pipefail\nexport HOME=\"${HOME:-/root}\"\nexport NVM_DIR=\"${NVM_DIR:-$HOME/.nvm}\"\n\necho \"==\u003e Removing NVM, Node, and pnpm\"\nrm -rf \"$NVM_DIR\"\nrm -f \"$HOME/.npmrc\" 2\u003e/dev/null || true\nrm -rf \"$HOME/.local/share/pnpm\" \"$HOME/.local/state/pnpm\" 2\u003e/dev/null || true\ncommand -v npm \u003e/dev/null 2\u003e\u00261 \u0026\u0026 npm uninstall -g pnpm 2\u003e/dev/null || true\nfor f in \"$HOME/.bashrc\" \"$HOME/.profile\" /etc/profile; do\n  [ -f \"$f\" ] || continue\n  tmp=\"$(mktemp)\"\n  grep -vE 'NVM_DIR|nvm\\.sh|pnpm' \"$f\" \u003e \"$tmp\" || true\n  mv \"$tmp\" \"$f\"\ndone\necho \"==\u003e Node.js / NVM fully removed\"\n",
+  "upgrade_script": ""
+}

@@ -1,0 +1,18 @@
+{
+  "version": "apt",
+  "is_latest": true,
+  "os": "linux",
+  "distro_id": "",
+  "distro_version": "",
+  "distro": "",
+  "arch": "",
+  "platform": "linux",
+  "package_family": "apt",
+  "kernel": "",
+  "virtualization": "",
+  "container_runtime": "",
+  "cloud_provider": "",
+  "install_script": "#!/bin/bash\nset -euo pipefail\nexport DEBIAN_FRONTEND=noninteractive\n\necho \"==\u003e Installing radeontop (AMD Radeon GPU utilization)\"\napt-get update -y\napt-get install -y --no-install-recommends radeontop\n\necho \"==\u003e Verifying\"\ncommand -v radeontop\nradeontop -h 2\u003e\u00261 | head -n 5 || true\necho \"==\u003e radeontop installed\"\n",
+  "uninstall_script": "#!/bin/bash\nset -euo pipefail\nexport DEBIAN_FRONTEND=noninteractive\n\necho \"==\u003e Fully removing radeontop\"\nif command -v apt-get \u003e/dev/null 2\u003e\u00261; then\n  apt-get remove -y --purge radeontop || true\n  apt-get autoremove -y || true\nelif command -v dnf \u003e/dev/null 2\u003e\u00261; then\n  dnf remove -y radeontop || true\nelif command -v pacman \u003e/dev/null 2\u003e\u00261; then\n  pacman -Rns --noconfirm radeontop || true\nfi\necho \"==\u003e radeontop removed\"\n",
+  "upgrade_script": ""
+}

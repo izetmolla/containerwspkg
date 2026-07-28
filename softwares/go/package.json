@@ -1,0 +1,17 @@
+{
+  "name": "Go",
+  "details": "Install the Go toolchain (default 1.26.5), configure GOROOT/GOPATH, and install Air for live reloads.",
+  "category": "Development",
+  "sub_category": "Runtimes",
+  "tags": [
+    "go",
+    "golang",
+    "air",
+    "runtime"
+  ],
+  "icon": "Box",
+  "color": "#00ADD8",
+  "order": 1,
+  "service_units": null,
+  "is_active": true
+}

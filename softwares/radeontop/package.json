@@ -1,0 +1,19 @@
+{
+  "name": "radeontop",
+  "details": "Live AMD Radeon GPU utilization monitor. Shows graphics, memory, and shader activity for amdgpu/radeon devices from a shell.",
+  "category": "Monitoring",
+  "sub_category": "GPU",
+  "tags": [
+    "radeontop",
+    "gpu",
+    "amd",
+    "radeon",
+    "amdgpu",
+    "monitoring"
+  ],
+  "icon": "Activity",
+  "color": "#EF4444",
+  "order": 62,
+  "service_units": null,
+  "is_active": true
+}
