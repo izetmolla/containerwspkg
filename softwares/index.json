@@ -352,6 +352,25 @@
       "order": 213,
       "service_units": null,
       "is_active": true
+    },
+    {
+      "name": "rust",
+      "details": "Install the Rust toolchain via rustup from https://rust-lang.org (rustc, cargo, rustup).",
+      "category": "Development",
+      "sub_category": "Runtimes",
+      "tags": [
+        "rust",
+        "rustup",
+        "cargo",
+        "rustc",
+        "toolchain"
+      ],
+      "icon": "Code",
+      "image": "https://www.rust-lang.org/static/images/rust-logo-blk.svg",
+      "color": "#DEA584",
+      "order": 3,
+      "service_units": null,
+      "is_active": true
     }
   ]
 }
