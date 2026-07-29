@@ -199,7 +199,7 @@
     },
     {
       "name": "nvtop",
-      "details": "Universal GPU process monitor (htop for graphics). Works across NVIDIA, AMD, Intel, and other DRM GPUs \u2014 utilization, VRAM, and per-process use.",
+      "details": "Universal GPU process monitor (htop for graphics). Works across NVIDIA, AMD, Intel, and other DRM GPUs — utilization, VRAM, and per-process use.",
       "category": "Monitoring",
       "sub_category": "GPU",
       "tags": [
@@ -327,7 +327,7 @@
         "network"
       ],
       "icon": "Activity",
-      "image": "https://www.google.com/s2/favicons?domain=etherape.sourceforge.io&sz=128",
+      "image": "https://www.google.com/s2/favicons?domain=etherape.sourceforge.io\u0026sz=128",
       "color": "#00ACC1",
       "order": 212,
       "service_units": null,
@@ -347,7 +347,7 @@
         "network"
       ],
       "icon": "Shield",
-      "image": "https://www.google.com/s2/favicons?domain=www.ettercap-project.org&sz=128",
+      "image": "https://www.google.com/s2/favicons?domain=www.ettercap-project.org\u0026sz=128",
       "color": "#C62828",
       "order": 213,
       "service_units": null,
@@ -366,7 +366,7 @@
         "rdp"
       ],
       "icon": "Monitor",
-      "image": "https://www.google.com/s2/favicons?domain=rustdesk.com&sz=128",
+      "image": "https://www.google.com/s2/favicons?domain=rustdesk.com\u0026sz=128",
       "color": "#024EFF",
       "order": 20,
       "service_units": null,
@@ -389,6 +389,26 @@
       "image": "https://www.rust-lang.org/static/images/rust-logo-blk.svg",
       "color": "#DEA584",
       "order": 3,
+      "service_units": null,
+      "is_active": true
+    },
+    {
+      "name": "libreoffice",
+      "details": "LibreOffice office productivity suite (Writer, Calc, Impress, Draw, Base).",
+      "category": "Office",
+      "sub_category": "Productivity",
+      "tags": [
+        "libreoffice",
+        "office",
+        "writer",
+        "calc",
+        "impress",
+        "documents"
+      ],
+      "icon": "FileText",
+      "image": "https://cdn.simpleicons.org/libreoffice",
+      "color": "#18A303",
+      "order": 30,
       "service_units": null,
       "is_active": true
     }
