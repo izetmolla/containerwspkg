@@ -1,0 +1,22 @@
+{
+  "name": "certbot",
+  "details": "EFF Certbot — free automated HTTPS certificates from Let's Encrypt (https://certbot.eff.org/). Installs the certbot CLI; use with nginx/apache plugins or standalone/webroot as needed.",
+  "category": "Security",
+  "sub_category": "Certificates",
+  "tags": [
+    "certbot",
+    "letsencrypt",
+    "https",
+    "ssl",
+    "tls",
+    "eff",
+    "nginx",
+    "apache"
+  ],
+  "icon": "Package",
+  "image": "https://logo.clearbit.com/certbot.eff.org",
+  "color": "#0ea5e9",
+  "order": 0,
+  "service_units": null,
+  "is_active": true
+}
