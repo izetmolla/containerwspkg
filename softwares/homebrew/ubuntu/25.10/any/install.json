@@ -1,0 +1,19 @@
+{
+  "version": "latest",
+  "is_latest": true,
+  "os": "linux",
+  "distro_id": "ubuntu",
+  "distro_version": "25.10",
+  "distro": "",
+  "arch": "any",
+  "platform": "",
+  "package_family": "apt",
+  "kernel": "",
+  "virtualization": "",
+  "container_runtime": "",
+  "cloud_provider": "",
+  "install_script": "#!/usr/bin/env bash\nset -euo pipefail\nexport NONINTERACTIVE=1\nexport HOME=\"${HOME:-/root}\"\nexport USER=\"${USER:-root}\"\n\necho \"==> Installing Homebrew (https://brew.sh/)\"\n\nif command -v apt-get >/dev/null 2>&1; then\n  export DEBIAN_FRONTEND=noninteractive\n  apt-get update -y || true\n  apt-get install -y --no-install-recommends build-essential procps curl file git ca-certificates || true\nelif command -v dnf >/dev/null 2>&1; then\n  dnf -y groupinstall \"Development Tools\" || true\n  dnf -y install procps-ng curl file git || true\nfi\n\nif ! command -v brew >/dev/null 2>&1; then\n  /bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\nfi\n\nfor prefix in /home/linuxbrew/.linuxbrew /opt/homebrew /usr/local; do\n  if [ -x \"$prefix/bin/brew\" ]; then\n    eval \"$(\"$prefix/bin/brew\" shellenv)\"\n    break\n  fi\ndone\n\ninstall -d -m 755 /etc/profile.d\ncat >/etc/profile.d/homebrew.sh <<'EOF'\nfor prefix in /home/linuxbrew/.linuxbrew /opt/homebrew /usr/local; do\n  if [ -x \"$prefix/bin/brew\" ]; then\n    eval \"$(\"$prefix/bin/brew\" shellenv)\"\n    break\n  fi\ndone\nEOF\nchmod 644 /etc/profile.d/homebrew.sh\n\nif ! command -v brew >/dev/null 2>&1; then\n  echo \"ERROR: brew not found after install\" >&2\n  exit 1\nfi\n\necho \"==> $(brew --version | head -n1)\"\necho \"==> Homebrew installed (https://brew.sh/)\"\n",
+  "uninstall_script": "#!/usr/bin/env bash\nset -euo pipefail\necho \"==> Uninstalling Homebrew\"\nexport NONINTERACTIVE=1\nfor prefix in /home/linuxbrew/.linuxbrew /opt/homebrew /usr/local; do\n  if [ -x \"$prefix/bin/brew\" ]; then\n    /bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)\" || true\n    break\n  fi\ndone\nrm -f /etc/profile.d/homebrew.sh\nrm -rf /home/linuxbrew/.linuxbrew || true\necho \"==> Homebrew removed\"\n",
+  "upgrade_script": "#!/usr/bin/env bash\nset -euo pipefail\nexport NONINTERACTIVE=1\nfor prefix in /home/linuxbrew/.linuxbrew /opt/homebrew /usr/local; do\n  if [ -x \"$prefix/bin/brew\" ]; then\n    eval \"$(\"$prefix/bin/brew\" shellenv)\"\n    break\n  fi\ndone\nbrew update\nbrew upgrade || true\necho \"==> $(brew --version | head -n1)\"\n",
+  "custom_script": ""
+}

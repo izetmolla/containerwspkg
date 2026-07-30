@@ -1,0 +1,18 @@
+{
+  "name": "Homebrew",
+  "details": "The Package Manager for Everywhere \u2014 install Homebrew from https://brew.sh/ (macOS, Linux, WSL).",
+  "category": "Development",
+  "sub_category": "Package Managers",
+  "tags": [
+    "homebrew",
+    "brew",
+    "linuxbrew",
+    "package-manager"
+  ],
+  "icon": "Package",
+  "image": "https://brew.sh/assets/img/homebrew-256x256.png",
+  "color": "#FBB040",
+  "order": 5,
+  "service_units": null,
+  "is_active": true
+}
