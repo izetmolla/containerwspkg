@@ -451,6 +451,25 @@
       "order": 0,
       "service_units": null,
       "is_active": true
+    },
+    {
+      "name": "kubectl",
+      "details": "Kubernetes command-line tool for controlling clusters.",
+      "category": "Infrastructure",
+      "sub_category": "Kubernetes",
+      "tags": [
+        "kubernetes",
+        "k8s",
+        "kubectl",
+        "cli",
+        "containers"
+      ],
+      "icon": "Terminal",
+      "image": "https://cdn.simpleicons.org/kubernetes/326CE5",
+      "color": "#326CE5",
+      "order": 0,
+      "service_units": null,
+      "is_active": true
     }
   ]
 }

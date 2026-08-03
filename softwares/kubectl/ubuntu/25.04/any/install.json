@@ -1,0 +1,18 @@
+{
+  "version": "stable",
+  "is_latest": true,
+  "os": "linux",
+  "distro_id": "ubuntu",
+  "distro_version": "25.04",
+  "distro": "",
+  "arch": "any",
+  "platform": "",
+  "package_family": "apt",
+  "kernel": "",
+  "virtualization": "",
+  "container_runtime": "",
+  "cloud_provider": "",
+  "install_script": "#!/bin/bash\nset -euo pipefail\n\nexport HOME=\"${HOME:-/root}\"\nexport USER=\"${USER:-root}\"\nexport DEBIAN_FRONTEND=noninteractive\nexport PATH=\"/usr/local/bin:$PATH\"\n\nKUBECTL_VERSION=\"${1:-}\"\nif [ -z \"$KUBECTL_VERSION\" ]; then\n  KUBECTL_VERSION=\"$(curl -fsSL https://dl.k8s.io/release/stable.txt)\"\nfi\n\narch=\"$(uname -m)\"\ncase \"$arch\" in\n  x86_64) karch=\"amd64\" ;;\n  aarch64|arm64) karch=\"arm64\" ;;\n  armv7l|armhf) karch=\"arm\" ;;\n  *)\n    echo \"ERROR: unsupported architecture ($arch)\" >&2\n    exit 1\n    ;;\nesac\n\necho \"==> Installing kubectl ${KUBECTL_VERSION} (${karch})\"\n\nif command -v apt-get >/dev/null 2>&1; then\n  apt-get update\n  apt-get install --no-install-recommends -y ca-certificates curl\nelif command -v dnf >/dev/null 2>&1; then\n  dnf install -y ca-certificates curl\nelif command -v apk >/dev/null 2>&1; then\n  apk add --no-cache ca-certificates curl\nelif command -v pacman >/dev/null 2>&1; then\n  pacman -Sy --noconfirm ca-certificates curl\nfi\n\nworkdir=\"$(mktemp -d /tmp/kubectl-install.XXXXXX)\"\ntrap 'rm -rf \"$workdir\"' EXIT\ncd \"$workdir\"\n\ncurl -fsSLo kubectl \"https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/${karch}/kubectl\"\ncurl -fsSLo kubectl.sha256 \"https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/${karch}/kubectl.sha256\"\necho \"$(cat kubectl.sha256)  kubectl\" | sha256sum -c -\ninstall -m 0755 kubectl /usr/local/bin/kubectl\n\necho \"==> Verifying installation\"\nkubectl version --client\necho \"==> kubectl ${KUBECTL_VERSION} installed at $(command -v kubectl)\"\n",
+  "uninstall_script": "#!/bin/bash\nset -euo pipefail\necho \"==> Removing kubectl\"\nrm -f /usr/local/bin/kubectl\necho \"==> kubectl removed\"\n",
+  "upgrade_script": ""
+}
