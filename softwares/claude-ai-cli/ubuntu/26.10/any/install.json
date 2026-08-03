@@ -1,0 +1,18 @@
+{
+  "version": "native-1",
+  "is_latest": true,
+  "os": "linux",
+  "distro_id": "ubuntu",
+  "distro_version": "26.10",
+  "distro": "",
+  "arch": "any",
+  "platform": "",
+  "package_family": "apt",
+  "kernel": "",
+  "virtualization": "",
+  "container_runtime": "",
+  "cloud_provider": "",
+  "install_script": "#!/bin/bash\nset -euo pipefail\n\nexport HOME=\"${HOME:-/root}\"\nexport USER=\"${USER:-root}\"\nexport DEBIAN_FRONTEND=noninteractive\nexport PATH=\"$HOME/.local/bin:/usr/local/bin:$PATH\"\n# Native installer refuses sudo-from-user without this; container installs often run as root.\nexport CLAUDE_INSTALL_ALLOW_SUDO=\"${CLAUDE_INSTALL_ALLOW_SUDO:-1}\"\n\necho \"==> Installing Claude AI CLI (Claude Code)\"\n\nif command -v apt-get >/dev/null 2>&1; then\n  apt-get update\n  apt-get install --no-install-recommends -y ca-certificates curl bash\nelif command -v dnf >/dev/null 2>&1; then\n  dnf install -y ca-certificates curl bash\nelif command -v apk >/dev/null 2>&1; then\n  apk add --no-cache ca-certificates curl bash\nelif command -v pacman >/dev/null 2>&1; then\n  pacman -Sy --noconfirm ca-certificates curl bash\nfi\n\ncurl -fsSL https://claude.ai/install.sh | bash\n\n# Ensure ~/.local/bin is on PATH for login and interactive shells.\nPROFILE_SNIPPET='\n# Claude Code (claude-ai-cli)\nexport PATH=\"$HOME/.local/bin:$PATH\"\n'\nfor profile in \"$HOME/.bashrc\" \"$HOME/.profile\" /etc/profile.d/claude-ai-cli.sh; do\n  dir=\"$(dirname \"$profile\")\"\n  mkdir -p \"$dir\"\n  if [ ! -f \"$profile\" ] || ! grep -q 'Claude Code (claude-ai-cli)' \"$profile\" 2>/dev/null; then\n    printf '%s\\n' \"$PROFILE_SNIPPET\" >> \"$profile\"\n  fi\ndone\n\nif ! command -v claude >/dev/null 2>&1; then\n  if [ -x \"$HOME/.local/bin/claude\" ]; then\n    ln -sfn \"$HOME/.local/bin/claude\" /usr/local/bin/claude\n  fi\nfi\n\necho \"==> Verifying installation\"\nclaude --version\necho \"==> Claude AI CLI installed at $(command -v claude)\"\n",
+  "uninstall_script": "#!/bin/bash\nset -euo pipefail\n\nexport HOME=\"${HOME:-/root}\"\n\necho \"==> Removing Claude AI CLI (Claude Code)\"\nrm -f \"$HOME/.local/bin/claude\" /usr/local/bin/claude\nrm -rf \"$HOME/.claude/downloads\"\nfor f in \"$HOME/.bashrc\" \"$HOME/.profile\" /etc/profile.d/claude-ai-cli.sh; do\n  [ -f \"$f\" ] || continue\n  if [ \"$f\" = /etc/profile.d/claude-ai-cli.sh ]; then\n    rm -f \"$f\"\n    continue\n  fi\n  tmp=\"$(mktemp)\"\n  awk '\n    /Claude Code \\(claude-ai-cli\\)/ { skip=1; next }\n    skip && /^export PATH=.*\\.local\\/bin/ { skip=0; next }\n    { skip=0; print }\n  ' \"$f\" > \"$tmp\" || true\n  mv \"$tmp\" \"$f\"\ndone\necho \"==> Claude AI CLI removed (auth under ~/.claude left intact)\"\n",
+  "upgrade_script": "#!/bin/bash\nset -euo pipefail\n\nexport HOME=\"${HOME:-/root}\"\nexport PATH=\"$HOME/.local/bin:/usr/local/bin:$PATH\"\nexport CLAUDE_INSTALL_ALLOW_SUDO=\"${CLAUDE_INSTALL_ALLOW_SUDO:-1}\"\n\necho \"==> Upgrading Claude AI CLI (Claude Code)\"\ncurl -fsSL https://claude.ai/install.sh | bash -s -- latest\nclaude --version\necho \"==> Upgrade complete\"\n"
+}

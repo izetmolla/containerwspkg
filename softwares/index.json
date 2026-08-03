@@ -199,7 +199,7 @@
     },
     {
       "name": "nvtop",
-      "details": "Universal GPU process monitor (htop for graphics). Works across NVIDIA, AMD, Intel, and other DRM GPUs — utilization, VRAM, and per-process use.",
+      "details": "Universal GPU process monitor (htop for graphics). Works across NVIDIA, AMD, Intel, and other DRM GPUs \u2014 utilization, VRAM, and per-process use.",
       "category": "Monitoring",
       "sub_category": "GPU",
       "tags": [
@@ -327,7 +327,7 @@
         "network"
       ],
       "icon": "Activity",
-      "image": "https://www.google.com/s2/favicons?domain=etherape.sourceforge.io\u0026sz=128",
+      "image": "https://www.google.com/s2/favicons?domain=etherape.sourceforge.io&sz=128",
       "color": "#00ACC1",
       "order": 212,
       "service_units": null,
@@ -347,7 +347,7 @@
         "network"
       ],
       "icon": "Shield",
-      "image": "https://www.google.com/s2/favicons?domain=www.ettercap-project.org\u0026sz=128",
+      "image": "https://www.google.com/s2/favicons?domain=www.ettercap-project.org&sz=128",
       "color": "#C62828",
       "order": 213,
       "service_units": null,
@@ -366,7 +366,7 @@
         "rdp"
       ],
       "icon": "Monitor",
-      "image": "https://www.google.com/s2/favicons?domain=rustdesk.com\u0026sz=128",
+      "image": "https://www.google.com/s2/favicons?domain=rustdesk.com&sz=128",
       "color": "#024EFF",
       "order": 20,
       "service_units": null,
@@ -414,7 +414,7 @@
     },
     {
       "name": "Homebrew",
-      "details": "The Package Manager for Everywhere — install Homebrew from https://brew.sh/ (macOS, Linux, WSL).",
+      "details": "The Package Manager for Everywhere \u2014 install Homebrew from https://brew.sh/ (macOS, Linux, WSL).",
       "category": "Development",
       "sub_category": "Package Managers",
       "tags": [
@@ -432,7 +432,7 @@
     },
     {
       "name": "certbot",
-      "details": "EFF Certbot — free automated HTTPS certificates from Let's Encrypt (https://certbot.eff.org/). Installs the certbot CLI; use with nginx/apache plugins or standalone/webroot as needed.",
+      "details": "EFF Certbot \u2014 free automated HTTPS certificates from Let's Encrypt (https://certbot.eff.org/). Installs the certbot CLI; use with nginx/apache plugins or standalone/webroot as needed.",
       "category": "Security",
       "sub_category": "Certificates",
       "tags": [
@@ -473,7 +473,7 @@
     },
     {
       "name": "minio-cli",
-      "details": "MinIO Client (mc) — S3-compatible object storage CLI.",
+      "details": "MinIO Client (mc) \u2014 S3-compatible object storage CLI.",
       "category": "Infrastructure",
       "sub_category": "Storage",
       "tags": [
@@ -487,6 +487,26 @@
       "image": "https://cdn.simpleicons.org/minio/C72E49",
       "color": "#C72E49",
       "order": 0,
+      "service_units": null,
+      "is_active": true
+    },
+    {
+      "name": "Claude AI CLI",
+      "details": "Anthropic Claude Code (Claude AI CLI) \u2014 agentic coding assistant for the terminal. Uses the official native installer with auto-updates.",
+      "category": "Development",
+      "sub_category": "AI Tools",
+      "tags": [
+        "claude",
+        "anthropic",
+        "ai",
+        "cli",
+        "coding",
+        "claude-code"
+      ],
+      "icon": "Sparkles",
+      "image": "https://cdn.simpleicons.org/anthropic/D97757",
+      "color": "#D97757",
+      "order": 10,
       "service_units": null,
       "is_active": true
     }

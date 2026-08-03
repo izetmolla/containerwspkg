@@ -1,0 +1,20 @@
+{
+  "name": "Claude AI CLI",
+  "details": "Anthropic Claude Code (Claude AI CLI) \u2014 agentic coding assistant for the terminal. Uses the official native installer with auto-updates.",
+  "category": "Development",
+  "sub_category": "AI Tools",
+  "tags": [
+    "claude",
+    "anthropic",
+    "ai",
+    "cli",
+    "coding",
+    "claude-code"
+  ],
+  "icon": "Sparkles",
+  "image": "https://cdn.simpleicons.org/anthropic/D97757",
+  "color": "#D97757",
+  "order": 10,
+  "service_units": null,
+  "is_active": true
+}
