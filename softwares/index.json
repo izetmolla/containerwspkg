@@ -509,6 +509,26 @@
       "order": 10,
       "service_units": null,
       "is_active": true
+    },
+    {
+      "name": "Cursor CLI",
+      "details": "Cursor CLI (agent) \u2014 Cursor AI agent for the terminal. Uses the official installer; places agent on PATH via ~/.local/bin.",
+      "category": "Development",
+      "sub_category": "AI Tools",
+      "tags": [
+        "cursor",
+        "cli",
+        "agent",
+        "ai",
+        "coding",
+        "cursor-agent"
+      ],
+      "icon": "Terminal",
+      "image": "https://cdn.simpleicons.org/cursor/000000",
+      "color": "#000000",
+      "order": 11,
+      "service_units": null,
+      "is_active": true
     }
   ]
 }

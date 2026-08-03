@@ -1,0 +1,18 @@
+{
+  "version": "native-1",
+  "is_latest": true,
+  "os": "linux",
+  "distro_id": "ubuntu",
+  "distro_version": "any",
+  "distro": "",
+  "arch": "any",
+  "platform": "",
+  "package_family": "apt",
+  "kernel": "",
+  "virtualization": "",
+  "container_runtime": "",
+  "cloud_provider": "",
+  "install_script": "#!/bin/bash\nset -euo pipefail\n\nexport HOME=\"${HOME:-/root}\"\nexport USER=\"${USER:-root}\"\nexport DEBIAN_FRONTEND=noninteractive\nexport PATH=\"$HOME/.local/bin:/usr/local/bin:$PATH\"\n\necho \"==> Installing Cursor CLI (agent)\"\n\nif command -v apt-get >/dev/null 2>&1; then\n  apt-get update\n  apt-get install --no-install-recommends -y ca-certificates curl bash\nelif command -v dnf >/dev/null 2>&1; then\n  dnf install -y ca-certificates curl bash\nelif command -v apk >/dev/null 2>&1; then\n  apk add --no-cache ca-certificates curl bash\nelif command -v pacman >/dev/null 2>&1; then\n  pacman -Sy --noconfirm ca-certificates curl bash\nfi\n\ncurl https://cursor.com/install -fsS | bash\n\n# Ensure ~/.local/bin is on PATH for login and interactive shells.\nPROFILE_SNIPPET='\n# Cursor CLI (cursor-cli)\nexport PATH=\"$HOME/.local/bin:$PATH\"\n'\nfor profile in \"$HOME/.bashrc\" \"$HOME/.profile\" /etc/profile.d/cursor-cli.sh; do\n  dir=\"$(dirname \"$profile\")\"\n  mkdir -p \"$dir\"\n  if [ ! -f \"$profile\" ] || ! grep -q 'Cursor CLI (cursor-cli)' \"$profile\" 2>/dev/null; then\n    printf '%s\\n' \"$PROFILE_SNIPPET\" >> \"$profile\"\n  fi\ndone\n\nif ! command -v agent >/dev/null 2>&1; then\n  if [ -x \"$HOME/.local/bin/agent\" ]; then\n    ln -sfn \"$HOME/.local/bin/agent\" /usr/local/bin/agent\n  elif [ -x \"$HOME/.local/bin/cursor-agent\" ]; then\n    ln -sfn \"$HOME/.local/bin/cursor-agent\" /usr/local/bin/agent\n  fi\nfi\n\necho \"==> Verifying installation\"\nagent --version\necho \"==> Cursor CLI installed at $(command -v agent)\"\n",
+  "uninstall_script": "#!/bin/bash\nset -euo pipefail\n\nexport HOME=\"${HOME:-/root}\"\n\necho \"==> Removing Cursor CLI (agent)\"\nrm -f \"$HOME/.local/bin/agent\" \"$HOME/.local/bin/cursor-agent\" /usr/local/bin/agent /usr/local/bin/cursor-agent\nrm -rf \"$HOME/.local/share/cursor-agent\"\nfor f in \"$HOME/.bashrc\" \"$HOME/.profile\" /etc/profile.d/cursor-cli.sh; do\n  [ -f \"$f\" ] || continue\n  if [ \"$f\" = /etc/profile.d/cursor-cli.sh ]; then\n    rm -f \"$f\"\n    continue\n  fi\n  tmp=\"$(mktemp)\"\n  awk '\n    /Cursor CLI \\(cursor-cli\\)/ { skip=1; next }\n    skip && /^export PATH=.*\\.local\\/bin/ { skip=0; next }\n    { skip=0; print }\n  ' \"$f\" > \"$tmp\" || true\n  mv \"$tmp\" \"$f\"\ndone\necho \"==> Cursor CLI removed (auth/config left intact if present)\"\n",
+  "upgrade_script": "#!/bin/bash\nset -euo pipefail\n\nexport HOME=\"${HOME:-/root}\"\nexport PATH=\"$HOME/.local/bin:/usr/local/bin:$PATH\"\n\necho \"==> Upgrading Cursor CLI (agent)\"\nif command -v agent >/dev/null 2>&1; then\n  agent update || curl https://cursor.com/install -fsS | bash\nelse\n  curl https://cursor.com/install -fsS | bash\nfi\nagent --version\necho \"==> Upgrade complete\"\n"
+}
