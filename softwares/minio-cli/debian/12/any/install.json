@@ -1,0 +1,18 @@
+{
+  "version": "latest",
+  "is_latest": true,
+  "os": "linux",
+  "distro_id": "debian",
+  "distro_version": "12",
+  "distro": "",
+  "arch": "any",
+  "platform": "",
+  "package_family": "apt",
+  "kernel": "",
+  "virtualization": "",
+  "container_runtime": "",
+  "cloud_provider": "",
+  "install_script": "#!/bin/bash\nset -euo pipefail\n\nexport HOME=\"${HOME:-/root}\"\nexport USER=\"${USER:-root}\"\nexport DEBIAN_FRONTEND=noninteractive\nexport PATH=\"/usr/local/bin:$PATH\"\n\narch=\"$(uname -m)\"\ncase \"$arch\" in\n  x86_64) march=\"amd64\" ;;\n  aarch64|arm64) march=\"arm64\" ;;\n  *)\n    echo \"ERROR: unsupported architecture ($arch)\" >&2\n    exit 1\n    ;;\nesac\n\necho \"==> Installing MinIO Client (mc) for linux-${march}\"\n\nif command -v apt-get >/dev/null 2>&1; then\n  apt-get update\n  apt-get install --no-install-recommends -y ca-certificates curl\nelif command -v dnf >/dev/null 2>&1; then\n  dnf install -y ca-certificates curl\nelif command -v apk >/dev/null 2>&1; then\n  apk add --no-cache ca-certificates curl\nelif command -v pacman >/dev/null 2>&1; then\n  pacman -Sy --noconfirm ca-certificates curl\nfi\n\nworkdir=\"$(mktemp -d /tmp/mc-install.XXXXXX)\"\ntrap 'rm -rf \"$workdir\"' EXIT\ncd \"$workdir\"\n\ncurl -fsSLo mc \"https://dl.min.io/client/mc/release/linux-${march}/mc\"\nchmod +x mc\ninstall -m 0755 mc /usr/local/bin/mc\n\necho \"==> Verifying installation\"\nmc --version\necho \"==> MinIO Client installed at $(command -v mc)\"\n",
+  "uninstall_script": "#!/bin/bash\nset -euo pipefail\necho \"==> Removing MinIO Client (mc)\"\nrm -f /usr/local/bin/mc\necho \"==> mc removed\"\n",
+  "upgrade_script": ""
+}

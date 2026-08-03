@@ -470,6 +470,25 @@
       "order": 0,
       "service_units": null,
       "is_active": true
+    },
+    {
+      "name": "minio-cli",
+      "details": "MinIO Client (mc) — S3-compatible object storage CLI.",
+      "category": "Infrastructure",
+      "sub_category": "Storage",
+      "tags": [
+        "minio",
+        "mc",
+        "s3",
+        "object-storage",
+        "cli"
+      ],
+      "icon": "Terminal",
+      "image": "https://cdn.simpleicons.org/minio/C72E49",
+      "color": "#C72E49",
+      "order": 0,
+      "service_units": null,
+      "is_active": true
     }
   ]
 }
