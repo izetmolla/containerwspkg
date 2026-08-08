@@ -11,6 +11,13 @@
   "icon": "Server",
   "color": "#009639",
   "order": 0,
-  "service_units": null,
-  "is_active": true
+  "service_units": [
+    "nginx.service"
+  ],
+  "is_active": true,
+  "can_control": true,
+  "control_backend": "systemd",
+  "start_command": "systemctl start nginx.service",
+  "restart_command": "systemctl restart nginx.service",
+  "stop_command": "systemctl stop nginx.service"
 }

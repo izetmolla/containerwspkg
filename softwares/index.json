@@ -13,8 +13,15 @@
       "icon": "Server",
       "color": "#009639",
       "order": 0,
-      "service_units": null,
-      "is_active": true
+      "service_units": [
+        "nginx.service"
+      ],
+      "is_active": true,
+      "can_control": true,
+      "control_backend": "systemd",
+      "start_command": "systemctl start nginx.service",
+      "restart_command": "systemctl restart nginx.service",
+      "stop_command": "systemctl stop nginx.service"
     },
     {
       "name": "Go",
@@ -67,7 +74,12 @@
       "service_units": [
         "docker.service"
       ],
-      "is_active": true
+      "is_active": true,
+      "can_control": true,
+      "control_backend": "docker",
+      "start_command": "systemctl start docker.service",
+      "restart_command": "systemctl restart docker.service",
+      "stop_command": "systemctl stop docker.service"
     },
     {
       "name": "Google Chrome",
@@ -199,7 +211,7 @@
     },
     {
       "name": "nvtop",
-      "details": "Universal GPU process monitor (htop for graphics). Works across NVIDIA, AMD, Intel, and other DRM GPUs \u2014 utilization, VRAM, and per-process use.",
+      "details": "Universal GPU process monitor (htop for graphics). Works across NVIDIA, AMD, Intel, and other DRM GPUs — utilization, VRAM, and per-process use.",
       "category": "Monitoring",
       "sub_category": "GPU",
       "tags": [
@@ -414,7 +426,7 @@
     },
     {
       "name": "Homebrew",
-      "details": "The Package Manager for Everywhere \u2014 install Homebrew from https://brew.sh/ (macOS, Linux, WSL).",
+      "details": "The Package Manager for Everywhere — install Homebrew from https://brew.sh/ (macOS, Linux, WSL).",
       "category": "Development",
       "sub_category": "Package Managers",
       "tags": [
@@ -432,7 +444,7 @@
     },
     {
       "name": "certbot",
-      "details": "EFF Certbot \u2014 free automated HTTPS certificates from Let's Encrypt (https://certbot.eff.org/). Installs the certbot CLI; use with nginx/apache plugins or standalone/webroot as needed.",
+      "details": "EFF Certbot — free automated HTTPS certificates from Let's Encrypt (https://certbot.eff.org/). Installs the certbot CLI; use with nginx/apache plugins or standalone/webroot as needed.",
       "category": "Security",
       "sub_category": "Certificates",
       "tags": [
@@ -473,7 +485,7 @@
     },
     {
       "name": "minio-cli",
-      "details": "MinIO Client (mc) \u2014 S3-compatible object storage CLI.",
+      "details": "MinIO Client (mc) — S3-compatible object storage CLI.",
       "category": "Infrastructure",
       "sub_category": "Storage",
       "tags": [
@@ -492,7 +504,7 @@
     },
     {
       "name": "Claude AI CLI",
-      "details": "Anthropic Claude Code (Claude AI CLI) \u2014 agentic coding assistant for the terminal. Uses the official native installer with auto-updates.",
+      "details": "Anthropic Claude Code (Claude AI CLI) — agentic coding assistant for the terminal. Uses the official native installer with auto-updates.",
       "category": "Development",
       "sub_category": "AI Tools",
       "tags": [
@@ -512,7 +524,7 @@
     },
     {
       "name": "Cursor CLI",
-      "details": "Cursor CLI (agent) \u2014 Cursor AI agent for the terminal. Uses the official installer; places agent on PATH via ~/.local/bin.",
+      "details": "Cursor CLI (agent) — Cursor AI agent for the terminal. Uses the official installer; places agent on PATH via ~/.local/bin.",
       "category": "Development",
       "sub_category": "AI Tools",
       "tags": [

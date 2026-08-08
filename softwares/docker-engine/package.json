@@ -15,5 +15,10 @@
   "service_units": [
     "docker.service"
   ],
-  "is_active": true
+  "is_active": true,
+  "can_control": true,
+  "control_backend": "docker",
+  "start_command": "systemctl start docker.service",
+  "restart_command": "systemctl restart docker.service",
+  "stop_command": "systemctl stop docker.service"
 }
