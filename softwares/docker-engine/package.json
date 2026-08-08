@@ -1,6 +1,6 @@
 {
   "name": "Docker Engine",
-  "details": "Install Docker Engine static binaries, Buildx, and Compose, then start the dockerd service.",
+  "details": "Install Docker Engine static binaries, Buildx, and Compose. Robust direct-mode start (no systemd): prefers iptables=false, restarts stale dockerd, installs ensure-dockerd.sh helper.",
   "category": "Infrastructure",
   "sub_category": "Containers",
   "tags": [
