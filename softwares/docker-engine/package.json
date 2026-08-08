@@ -1,13 +1,15 @@
 {
   "name": "Docker Engine",
-  "details": "Install Docker Engine static binaries, Buildx, and Compose. Robust direct-mode start (no systemd): prefers iptables=false, restarts stale dockerd, installs ensure-dockerd.sh helper.",
+  "details": "Install Docker Engine + Client (dockerd, containerd, docker CLI, Buildx, and Compose). Starts the local engine when possible (systemd or direct mode).",
   "category": "Infrastructure",
   "sub_category": "Containers",
   "tags": [
     "docker",
     "containers",
     "compose",
-    "buildx"
+    "buildx",
+    "engine",
+    "dockerd"
   ],
   "icon": "Container",
   "color": "#2496ED",
@@ -20,5 +22,6 @@
   "control_backend": "docker",
   "start_command": "systemctl start docker.service",
   "restart_command": "systemctl restart docker.service",
-  "stop_command": "systemctl stop docker.service"
+  "stop_command": "systemctl stop docker.service",
+  "image": "https://cdn.simpleicons.org/docker/2496ED"
 }

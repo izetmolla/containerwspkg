@@ -1,0 +1,24 @@
+{
+  "name": "Docker Client",
+  "details": "Install Docker Client only (docker CLI, Buildx, and Compose). Does not install or start dockerd — use with a remote Docker Engine via DOCKER_HOST.",
+  "category": "Infrastructure",
+  "sub_category": "Containers",
+  "tags": [
+    "docker",
+    "cli",
+    "client",
+    "compose",
+    "buildx"
+  ],
+  "icon": "Terminal",
+  "image": "https://cdn.simpleicons.org/docker/2496ED",
+  "color": "#2496ED",
+  "order": 4,
+  "service_units": [],
+  "can_control": false,
+  "control_backend": "",
+  "start_command": "",
+  "restart_command": "",
+  "stop_command": "",
+  "is_active": true
+}

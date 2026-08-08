@@ -59,16 +59,19 @@
     },
     {
       "name": "Docker Engine",
-      "details": "Install Docker Engine static binaries, Buildx, and Compose, then start the dockerd service.",
+      "details": "Install Docker Engine + Client (dockerd, containerd, docker CLI, Buildx, and Compose). Starts the local engine when possible (systemd or direct mode).",
       "category": "Infrastructure",
       "sub_category": "Containers",
       "tags": [
         "docker",
         "containers",
         "compose",
-        "buildx"
+        "buildx",
+        "engine",
+        "dockerd"
       ],
       "icon": "Container",
+      "image": "https://cdn.simpleicons.org/docker/2496ED",
       "color": "#2496ED",
       "order": 3,
       "service_units": [
@@ -541,6 +544,26 @@
       "order": 11,
       "service_units": null,
       "is_active": true
+    },
+    {
+      "name": "Docker Client",
+      "details": "Install Docker Client only (docker CLI, Buildx, and Compose). Does not install or start dockerd — use with a remote Docker Engine via DOCKER_HOST.",
+      "category": "Infrastructure",
+      "sub_category": "Containers",
+      "tags": [
+        "docker",
+        "cli",
+        "client",
+        "compose",
+        "buildx"
+      ],
+      "icon": "Terminal",
+      "image": "https://cdn.simpleicons.org/docker/2496ED",
+      "color": "#2496ED",
+      "order": 4,
+      "service_units": null,
+      "is_active": true,
+      "can_control": false
     }
   ]
 }
