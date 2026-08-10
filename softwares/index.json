@@ -585,6 +585,33 @@
       "order": 0,
       "service_units": null,
       "is_active": true
+    },
+    {
+      "name": "Cloudflare One Client",
+      "details": "Cloudflare One Client (formerly WARP) for Linux \u2014 installs from pkg.cloudflareclient.com, enables warp-svc, and documents warp-cli Zero Trust / consumer connect. https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/",
+      "category": "Networking",
+      "sub_category": "VPN",
+      "tags": [
+        "cloudflare",
+        "warp",
+        "zero-trust",
+        "vpn",
+        "cloudflare-one",
+        "warp-cli"
+      ],
+      "icon": "Shield",
+      "image": "https://cdn.simpleicons.org/cloudflare/F38020",
+      "color": "#F38020",
+      "order": 0,
+      "service_units": [
+        "warp-svc.service"
+      ],
+      "is_active": true,
+      "can_control": true,
+      "control_backend": "systemd",
+      "start_command": "systemctl start warp-svc.service",
+      "restart_command": "systemctl restart warp-svc.service",
+      "stop_command": "systemctl stop warp-svc.service"
     }
   ]
 }
