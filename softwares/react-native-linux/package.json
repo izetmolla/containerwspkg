@@ -1,0 +1,21 @@
+{
+  "name": "React Native Linux",
+  "details": "Linux Android development environment for React Native (https://reactnative.dev/docs/set-up-your-environment): installs Node.js 22+ if missing, OpenJDK 17, Android SDK command-line tools, Platform 35, Build-Tools 36.0.0, platform-tools, and configures ANDROID_HOME/JAVA_HOME.",
+  "category": "Development",
+  "sub_category": "Mobile",
+  "tags": [
+    "react-native",
+    "android",
+    "nodejs",
+    "jdk",
+    "sdk",
+    "mobile",
+    "linux"
+  ],
+  "icon": "Smartphone",
+  "image": "https://cdn.simpleicons.org/react/61DAFB",
+  "color": "#61DAFB",
+  "order": 0,
+  "service_units": null,
+  "is_active": true
+}
