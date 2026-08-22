@@ -615,7 +615,7 @@
     },
     {
       "name": "DeepSeek Harness",
-      "details": "DeepSeek Harness (dsh) \u2014 agent harness from source. Web UI on port 3080; systemd or background service. Upgrade pulls latest master, rebuilds, restarts.",
+      "details": "DeepSeek Harness (dsh) \u2014 agent harness from source. Web UI on port 3080 on 127.0.0.1; systemd or background service. Upgrade pulls latest master, rebuilds, restarts.",
       "category": "Development",
       "sub_category": "AI Tools",
       "tags": [
