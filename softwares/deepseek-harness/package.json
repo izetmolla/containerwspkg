@@ -1,6 +1,6 @@
 {
-  "name": "deepseek-harness",
-  "details": "DeepSeek Harness (dsh) — open-source agent harness with plugin architecture. Runs Web UI on port 3080.",
+  "name": "DeepSeek Harness",
+  "details": "DeepSeek Harness (dsh) \u2014 open-source agent harness with plugin architecture. Runs Web UI on port 3080.",
   "category": "Development",
   "sub_category": "AI Tools",
   "tags": [
@@ -21,5 +21,6 @@
   "start_command": "systemctl start deepseek-harness.service",
   "restart_command": "systemctl restart deepseek-harness.service",
   "stop_command": "systemctl stop deepseek-harness.service",
-  "is_active": true
+  "is_active": true,
+  "image": "https://cdn.simpleicons.org/deepseek/4D6BFE"
 }
