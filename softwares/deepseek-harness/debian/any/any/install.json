@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "is_latest": true,
+  "os": "linux",
+  "distro_id": "debian",
+  "distro_version": "any",
+  "distro": "",
+  "arch": "any",
+  "platform": "",
+  "package_family": "apt",
+  "kernel": "",
+  "virtualization": "",
+  "container_runtime": "",
+  "cloud_provider": "",
+  "install_script": "#!/usr/bin/env bash\nset -euo pipefail\nexport DEBIAN_FRONTEND=noninteractive\n# Prefer distro archives only — ignore broken third-party repos (exit 100).\napt_update_safe() {\n  local opts=(-o APT::Get::List-Cleanup=0)\n  if [[ -f /etc/apt/sources.list.d/ubuntu.sources ]]; then\n    apt-get update \"${opts[@]}\" \\\n      -o Dir::Etc::sourcelist=sources.list.d/ubuntu.sources \\\n      -o Dir::Etc::sourceparts=- \u0026\u0026 return 0\n  fi\n  if [[ -f /etc/apt/sources.list.d/debian.sources ]]; then\n    apt-get update \"${opts[@]}\" \\\n      -o Dir::Etc::sourcelist=sources.list.d/debian.sources \\\n      -o Dir::Etc::sourceparts=- \u0026\u0026 return 0\n  fi\n  if [[ -f /etc/apt/sources.list.d/kali.sources ]]; then\n    apt-get update \"${opts[@]}\" \\\n      -o Dir::Etc::sourcelist=sources.list.d/kali.sources \\\n      -o Dir::Etc::sourceparts=- \u0026\u0026 return 0\n  fi\n  if [[ -f /etc/apt/sources.list ]]; then\n    apt-get update \"${opts[@]}\" \\\n      -o Dir::Etc::sourcelist=sources.list \\\n      -o Dir::Etc::sourceparts=- \u0026\u0026 return 0\n  fi\n  apt-get update \\\n    -o Acquire::AllowInsecureRepositories=true \\\n    -o Acquire::AllowDowngradeToInsecureRepositories=true\n}\napt_update_safe\napt-get install -y --no-install-recommends deepseek-harness\ncommand -v deepseek-harness \u003e/dev/null\n",
+  "uninstall_script": "#!/usr/bin/env bash\nset -euo pipefail\nexport DEBIAN_FRONTEND=noninteractive\napt-get remove -y deepseek-harness || true\napt-get autoremove -y || true\n",
+  "upgrade_script": "#!/usr/bin/env bash\nset -euo pipefail\nexport DEBIAN_FRONTEND=noninteractive\n# Prefer distro archives only — ignore broken third-party repos (exit 100).\napt_update_safe() {\n  local opts=(-o APT::Get::List-Cleanup=0)\n  if [[ -f /etc/apt/sources.list.d/ubuntu.sources ]]; then\n    apt-get update \"${opts[@]}\" \\\n      -o Dir::Etc::sourcelist=sources.list.d/ubuntu.sources \\\n      -o Dir::Etc::sourceparts=- \u0026\u0026 return 0\n  fi\n  if [[ -f /etc/apt/sources.list.d/debian.sources ]]; then\n    apt-get update \"${opts[@]}\" \\\n      -o Dir::Etc::sourcelist=sources.list.d/debian.sources \\\n      -o Dir::Etc::sourceparts=- \u0026\u0026 return 0\n  fi\n  if [[ -f /etc/apt/sources.list.d/kali.sources ]]; then\n    apt-get update \"${opts[@]}\" \\\n      -o Dir::Etc::sourcelist=sources.list.d/kali.sources \\\n      -o Dir::Etc::sourceparts=- \u0026\u0026 return 0\n  fi\n  if [[ -f /etc/apt/sources.list ]]; then\n    apt-get update \"${opts[@]}\" \\\n      -o Dir::Etc::sourcelist=sources.list \\\n      -o Dir::Etc::sourceparts=- \u0026\u0026 return 0\n  fi\n  apt-get update \\\n    -o Acquire::AllowInsecureRepositories=true \\\n    -o Acquire::AllowDowngradeToInsecureRepositories=true\n}\napt_update_safe\napt-get install -y --only-upgrade deepseek-harness\n"
+}

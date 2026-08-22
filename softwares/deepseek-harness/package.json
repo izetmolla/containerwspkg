@@ -1,0 +1,25 @@
+{
+  "name": "deepseek-harness",
+  "details": "DeepSeek Harness (dsh) — open-source agent harness with plugin architecture. Runs Web UI on port 3080.",
+  "category": "Development",
+  "sub_category": "AI Tools",
+  "tags": [
+    "deepseek",
+    "dsh",
+    "harness",
+    "ai",
+    "agents"
+  ],
+  "icon": "Bot",
+  "color": "#4D6BFE",
+  "order": 0,
+  "service_units": [
+    "deepseek-harness.service"
+  ],
+  "can_control": true,
+  "control_backend": "systemd",
+  "start_command": "systemctl start deepseek-harness.service",
+  "restart_command": "systemctl restart deepseek-harness.service",
+  "stop_command": "systemctl stop deepseek-harness.service",
+  "is_active": true
+}
