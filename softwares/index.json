@@ -25,7 +25,7 @@
     },
     {
       "name": "Go",
-      "details": "Install the Go toolchain (default 1.27.0), configure GOROOT/GOPATH, and install Air for live reloads.",
+      "details": "Install the Go toolchain (default 1.27.1), configure GOROOT/GOPATH, and install Air for live reloads.",
       "category": "Development",
       "sub_category": "Runtimes",
       "tags": [
