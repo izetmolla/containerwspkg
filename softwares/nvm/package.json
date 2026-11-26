@@ -1,0 +1,20 @@
+{
+  "name": "NVM",
+  "details": "Install NVM (v0.41.0) — Node Version Manager — then Node.js LTS and pnpm. https://github.com/nvm-sh/nvm",
+  "category": "Development",
+  "sub_category": "Runtimes",
+  "tags": [
+    "nvm",
+    "node",
+    "nodejs",
+    "javascript",
+    "pnpm",
+    "runtime"
+  ],
+  "icon": "Layers",
+  "image": "https://cdn.simpleicons.org/nvm/7557D9",
+  "color": "#7557D9",
+  "order": 2,
+  "service_units": null,
+  "is_active": true
+}
