@@ -1,6 +1,6 @@
 {
   "name": "Node.js",
-  "details": "Install NVM (v0.40.5), the Node.js LTS release, and the latest pnpm package manager.",
+  "details": "Install NVM (v0.41.0), the Node.js LTS release, and the latest pnpm package manager.",
   "category": "Development",
   "sub_category": "Runtimes",
   "tags": [
