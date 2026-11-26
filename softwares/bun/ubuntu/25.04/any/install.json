@@ -1,0 +1,18 @@
+{
+   "distro" : "",
+   "version" : "1.4.5",
+   "virtualization" : "",
+   "arch" : "any",
+   "uninstall_script" : "#!/bin/bash\nset -euo pipefail\nexport HOME=\"${HOME:-/root}\"\nexport BUN_INSTALL=\"${BUN_INSTALL:-$HOME/.bun}\"\n\necho \"==> Removing Bun\"\nrm -rf \"$BUN_INSTALL\"\nrm -f /usr/local/bin/bun /usr/local/bin/bunx 2>/dev/null || true\nrm -f /etc/profile.d/bun.sh 2>/dev/null || true\nfor f in \"$HOME/.bashrc\" \"$HOME/.profile\" /etc/profile; do\n  [ -f \"$f\" ] || continue\n  tmp=\"$(mktemp)\"\n  grep -vE 'BUN_INSTALL|\\.bun/bin' \"$f\" > \"$tmp\" || true\n  mv \"$tmp\" \"$f\"\ndone\necho \"==> Bun fully removed\"\n",
+   "kernel" : "",
+   "distro_version" : "25.04",
+   "cloud_provider" : "",
+   "is_latest" : true,
+   "platform" : "",
+   "install_script" : "#!/bin/bash\n# Install Bun runtime via official installer (https://bun.com)\nset -euo pipefail\n\nexport HOME=\"${HOME:-/root}\"\nexport USER=\"${USER:-root}\"\nmkdir -p \"$HOME\"\n\nif [ -z \"${1:-}\" ]; then\n  BUN_VERSION=\"1.4.5\"\nelse\n  BUN_VERSION=\"$1\"\nfi\n# Accept either 1.4.5 or bun-v1.4.5\ncase \"$BUN_VERSION\" in\n  bun-v*) ;;\n  v*) BUN_VERSION=\"bun-$BUN_VERSION\" ;;\n  *) BUN_VERSION=\"bun-v$BUN_VERSION\" ;;\nesac\n\necho \"==> Installing Bun $BUN_VERSION\"\n\nif command -v apt-get >/dev/null 2>&1; then\n  export DEBIAN_FRONTEND=noninteractive\n  apt-get update -y || true\n  apt-get install -y --no-install-recommends ca-certificates curl unzip || true\nelif command -v dnf >/dev/null 2>&1; then\n  dnf -y install ca-certificates curl unzip || true\nelif command -v apk >/dev/null 2>&1; then\n  apk add --no-cache ca-certificates curl unzip || true\nfi\n\ncurl -fsSL https://bun.com/install | bash -s \"$BUN_VERSION\"\n\nexport BUN_INSTALL=\"${BUN_INSTALL:-$HOME/.bun}\"\nexport PATH=\"$BUN_INSTALL/bin:$PATH\"\n\n# System-wide PATH for all users\ninstall -d -m 755 /etc/profile.d\ncat >/etc/profile.d/bun.sh <<EOF\nexport BUN_INSTALL=\"\\$HOME/.bun\"\nexport PATH=\"\\$BUN_INSTALL/bin:\\$PATH\"\nEOF\nchmod 644 /etc/profile.d/bun.sh\n\n# Symlink into /usr/local/bin for non-login shells\nif [ -x \"$BUN_INSTALL/bin/bun\" ]; then\n  ln -sfn \"$BUN_INSTALL/bin/bun\" /usr/local/bin/bun\n  ln -sfn \"$BUN_INSTALL/bin/bunx\" /usr/local/bin/bunx 2>/dev/null || true\nfi\n\necho \"==> $(bun --version) ($(command -v bun))\"\necho \"==> Bun installed (see https://bun.com)\"\n",
+   "package_family" : "apt",
+   "distro_id" : "ubuntu",
+   "upgrade_script" : "#!/bin/bash\nset -euo pipefail\nexport HOME=\"${HOME:-/root}\"\nexport BUN_INSTALL=\"${BUN_INSTALL:-$HOME/.bun}\"\nexport PATH=\"$BUN_INSTALL/bin:$PATH\"\n\nif command -v bun >/dev/null 2>&1; then\n  echo \"==> Upgrading Bun via bun upgrade\"\n  bun upgrade || true\nfi\n\nif [ -z \"${1:-}\" ]; then\n  BUN_VERSION=\"1.4.5\"\nelse\n  BUN_VERSION=\"$1\"\nfi\ncase \"$BUN_VERSION\" in\n  bun-v*) ;;\n  v*) BUN_VERSION=\"bun-$BUN_VERSION\" ;;\n  *) BUN_VERSION=\"bun-v$BUN_VERSION\" ;;\nesac\n\necho \"==> Reinstalling Bun $BUN_VERSION\"\ncurl -fsSL https://bun.com/install | bash -s \"$BUN_VERSION\"\nexport PATH=\"$BUN_INSTALL/bin:$PATH\"\nif [ -x \"$BUN_INSTALL/bin/bun\" ]; then\n  ln -sfn \"$BUN_INSTALL/bin/bun\" /usr/local/bin/bun\n  ln -sfn \"$BUN_INSTALL/bin/bunx\" /usr/local/bin/bunx 2>/dev/null || true\nfi\necho \"==> $(bun --version)\"\n",
+   "container_runtime" : "",
+   "os" : "linux"
+}

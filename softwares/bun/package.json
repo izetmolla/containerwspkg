@@ -1,0 +1,19 @@
+{
+  "name": "Bun",
+  "details": "Install the Bun JavaScript runtime and package manager (default 1.4.5) from https://bun.com.",
+  "category": "Development",
+  "sub_category": "Runtimes",
+  "tags": [
+    "bun",
+    "javascript",
+    "typescript",
+    "runtime",
+    "package-manager"
+  ],
+  "icon": "Zap",
+  "image": "https://cdn.simpleicons.org/bun/FBF0DF",
+  "color": "#FBF0DF",
+  "order": 2,
+  "service_units": null,
+  "is_active": true
+}
