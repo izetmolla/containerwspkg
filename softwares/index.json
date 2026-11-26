@@ -488,7 +488,7 @@
     },
     {
       "name": "minio-cli",
-      "details": "MinIO Client (mc) — S3-compatible object storage CLI.",
+      "details": "MinIO AIStor Client (mc) — S3-compatible object storage CLI.",
       "category": "Infrastructure",
       "sub_category": "Storage",
       "tags": [

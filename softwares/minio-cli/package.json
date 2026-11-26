@@ -1,6 +1,6 @@
 {
   "name": "minio-cli",
-  "details": "MinIO Client (mc) \u2014 S3-compatible object storage CLI.",
+  "details": "MinIO AIStor Client (mc) \u2014 S3-compatible object storage CLI.",
   "category": "Infrastructure",
   "sub_category": "Storage",
   "tags": [
