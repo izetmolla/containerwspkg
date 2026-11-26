@@ -677,6 +677,25 @@
       "order": 2,
       "service_units": null,
       "is_active": true
+    },
+    {
+      "name": "Make",
+      "details": "GNU Make — build automation tool for directing compilation from Makefiles.",
+      "category": "Development",
+      "sub_category": "Build Tools",
+      "tags": [
+        "make",
+        "gnu-make",
+        "build",
+        "makefile",
+        "compile"
+      ],
+      "icon": "Hammer",
+      "image": "https://cdn.simpleicons.org/gnu/A42E2B",
+      "color": "#A42E2B",
+      "order": 15,
+      "service_units": null,
+      "is_active": true
     }
   ]
 }
